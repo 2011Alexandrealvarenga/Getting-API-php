@@ -37,9 +37,19 @@ $urlEmbed = 'https://api.giphy.com/v1/gifs/trending?api_key=pLURtkhVrUXr3KG25Gy5
   <?php
     foreach($result['data'] as $get_result){?>
     <div class="content">
-      <p>Titulo: <?php echo $get_result['title'] ;?></p>
-      <p class="">Id: <?php echo $get_result['id'] ;?></p>
-      <img src="<?php echo $get_result['images']['480w_still']['url'];?>" width="90px" height="90">
+        <a href="<?php echo $get_result['url'] ;?>">
+          <p>Titulo: <?php echo $get_result['title'] ;?></p>
+        </a>
+        <p class="">Id: <?php echo $get_result['id'] ;?></p>
+        <p class="">img sem caracteres: 
+          <?php           
+            $new_image = $get_result['images']['480w_still']['url'];            
+            $image_new = substr($new_image, 0, -5);
+            echo $image_new           
+          ;?>
+        </p>
+        <img src="<?php echo $image_new?>" width="170px" height="170px">
+        <br><br>
     </div>
   <?php }?>
 
